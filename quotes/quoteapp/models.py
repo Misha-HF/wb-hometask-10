@@ -7,13 +7,12 @@ class Author(models.Model):
     description = models.CharField(max_length=3500, null=False)
 
     def __str__(self):
-        return self.fullname
+        return f"{self.fullname}"
 
 class Quote(models.Model):
     description = models.CharField(max_length=700, null=False)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.description
-    
+        return f"{self.description}"
 
