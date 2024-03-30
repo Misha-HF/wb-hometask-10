@@ -69,6 +69,17 @@ files = [
 pymongo = ">=3.4,<5.0"
 
 [[package]]
+name = "pathlib"
+version = "1.0.1"
+description = "Object-oriented filesystem paths"
+optional = false
+python-versions = "*"
+files = [
+    {file = "pathlib-1.0.1-py3-none-any.whl", hash = "sha256:f35f95ab8b0f59e6d354090350b44a80a80635d22efdedfa84c7ad1cf0a74147"},
+    {file = "pathlib-1.0.1.tar.gz", hash = "sha256:6940718dfc3eff4258203ad5021090933e5c04707d5ca8cc9e73c94a7894ea9f"},
+]
+
+[[package]]
 name = "psycopg2"
 version = "2.9.9"
 description = "psycopg2 - Python-PostgreSQL Database Adapter"
@@ -223,4 +234,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "bfbaec964125461f73969f87806e2b5b9eeec11974b0e542ad1ea6d738c4e233"
+content-hash = "cc8a245ec19cfedd89f6f3bfde30a8f9ccda9cd5383c9e08dcde7bacc6bd08df"

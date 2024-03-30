@@ -1,27 +1,46 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
     <title>Quotes</title>
     <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@latest/css/pico.min.css"/>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'quoteapp/style.css' %}">
 </head>
 <body>
 <main class="container">
     <nav style="margin-bottom: 20px; border-bottom: 2px solid; padding-left: 30px">
+        <h1>
+            <a href="/" class="main-nav-text" style="text-decoration: none">Quotes to Scrape(django)</a>
+        </h1>
         <ul>
-            <li><a href="{% url 'qouteapp:quote' %}" role="button">Add Qoute</a></li>
-            <li><a href="{% url 'qouteapp:author' %}" role="button">Add Author</a></li>
+            <li><a href="addquote/" role="button">Add Qoute</a></li>
+            <li><a href="addauthor/" role="button">Add Author</a></li>
         </ul>
     </nav>
 
-    {% for quote in quotes %}
+    {% if quotes_added %}
+    {% for quote_added in quotes_added %}
     <div class="quote">
-        <span class="text" itemprop="text">{{quote.description}}</span>
-        <span>by <small class="author" itemprop="author">Albert Einstein</small>
-        <a href="/author/Albert-Einstein">(about)</a>
+        <span class="text">{{quote_added.description}}</span>
+        <span>by <small class="author">{{quote_added.author.fullname}}</small>
+        <a href="{% url 'quoteapp:author' quote.author.fullname %}">(about)</a>
         </span>
     </div>
     {% endfor %}
+    {% endif %}
+
+
+    {% for quote in quotes %}
+    <div class="quote">
+        <span class="text">{{quote.description}}</span>
+        <span>by <small class="author">{{quote.author.fullname}}</small>
+        <a href="{% url 'quoteapp:author' quote.author.fullname %}">(about)</a>
+        </span>
+    </div>
+    {% endfor %}
+
 </main>
 </body>
 </html>
