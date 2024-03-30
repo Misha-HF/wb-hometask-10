@@ -10,22 +10,35 @@
 </head>
 <body>
 <main class="container">
+
+
     <nav style="margin-bottom: 20px; border-bottom: 2px solid; padding-left: 30px">
         <h1>
             <a href="/" class="main-nav-text" style="text-decoration: none">Quotes to Scrape(django)</a>
         </h1>
+        {% if user.is_authenticated %}
         <ul>
             <li><a href="addquote/" role="button">Add Qoute</a></li>
             <li><a href="addauthor/" role="button">Add Author</a></li>
         </ul>
+        <ul>
+            <li>Welcome <b>{{ user.username }}!</b></li>
+            <li><a href="{% url 'users:logout' %}" role="button">Logout</a></li>
+        </ul>
+        {% else %}
+        <ul>
+            <li><a href="{% url 'users:signup' %}" role="button">Sign Up</a></li>
+            <li><a href="{% url 'users:login' %}" role="button">Login</a></li>
+        </ul>
+        {% endif %}
     </nav>
 
     {% if quotes_added %}
     {% for quote_added in quotes_added %}
     <div class="quote">
-        <span class="text">{{quote_added.description}}</span>
+        <span class="text">“{{quote_added.description}}“</span>
         <span>by <small class="author">{{quote_added.author.fullname}}</small>
-        <a href="{% url 'quoteapp:author' quote.author.fullname %}">(about)</a>
+        <a href="{% url 'quoteapp:author' quote_added.author.fullname %}">(about)</a>
         </span>
     </div>
     {% endfor %}
