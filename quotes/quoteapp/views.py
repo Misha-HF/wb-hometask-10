@@ -2,7 +2,11 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponseBadRequest
 
+# Михайло, [29.03.2024 11:41]
+# docker run --name quotes-postgres -p 5432:5432 -e POSTGRES_PASSWORD=214365 -d postgres
+# password to superuser: 214365
 # from .forms import QuoteForm, AuthorForm
+
 from .models import Quote, Author, QuoteReg, AuthorReg, QuoteRegField
 from .forms import AuthorForm, QuoteForm
 # Create your views here.

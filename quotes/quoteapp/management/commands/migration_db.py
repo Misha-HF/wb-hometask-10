@@ -1,5 +1,6 @@
 from django.core.management.base import BaseCommand
 from quoteapp.models import Author, Quote, AuthorReg, QuoteRegField, QuoteReg
+from django.contrib.auth.models import User
 from models_mongodb import Quote as MongoQuote, Author as MongoAuthor
 import connect
 
@@ -23,4 +24,4 @@ class Command(BaseCommand):
         AuthorReg.objects.all().delete()
         QuoteReg.objects.all().delete()
         QuoteRegField.objects.all().delete()
-    
+        User.objects.all().delete()
